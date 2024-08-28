@@ -19,7 +19,6 @@ class WeatherViewModel: ObservableObject {
     
     func fetchData() {
         // get data and location info
-
         LocationManager.shared.getLocation { location in
             LocationManager.shared.resolveName(for: CLLocation(latitude: location.lat,
                                                                longitude: location.lon)
@@ -28,20 +27,20 @@ class WeatherViewModel: ObservableObject {
                     self.headerViewModel.location = name ?? "Current"
                 }
             }
-
+            
             let urlString = "https://api.openweathermap.org/data/2.5/onecall?lat=\(location.lat)&lon=\(location.lon)&exclude=minutely&units=imperial&appid=c0fe764b892253282a9c1701b3bf72b5"
             guard let url = URL(string: urlString) else {
                 return
             }
-
+            
             let task = URLSession.shared.dataTask(with: url) { data, _, error in
                 guard let data = data, error == nil else {
                     return
                 }
-
+                
                 do {
                     let result = try JSONDecoder().decode(APIResponse.self, from: data)
-
+                    
                     DispatchQueue.main.async {
                         // Hourly
                         self.headerViewModel.currentTemp = "\(Int(result.current.temp))°F"
@@ -55,7 +54,7 @@ class WeatherViewModel: ObservableObject {
                             data.imageURL = String.iconUrlString(for: $0.weather.first?.icon ?? "")
                             return data
                         })
-
+                        
                         // Daily
                         self.dailyData = result.daily.compactMap({
                             let data = DayData()
@@ -65,7 +64,7 @@ class WeatherViewModel: ObservableObject {
                             return data
                         })
                     }
-
+                    
                     return
                 }
                 catch {

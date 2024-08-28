@@ -39,7 +39,7 @@ struct HoursView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 35, height: 35, alignment: .center)
-
+                
             })
             
             Text(model.temp)

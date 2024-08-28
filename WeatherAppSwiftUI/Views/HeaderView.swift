@@ -31,7 +31,7 @@ struct HeaderView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 150, height: 150, alignment: .center)
             }
-
+            
             Text(viewModel.headerViewModel.currentTemp)
                 .bold()
                 .foregroundStyle(Color.white)

@@ -16,7 +16,7 @@ extension DateFormatter {
         formatter.dateFormat = "ha"
         return formatter
     }()
-
+    
     static let dayFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.timeZone = .current
@@ -32,7 +32,7 @@ extension String {
         let date = Date(timeIntervalSince1970: TimeInterval(dt))
         return DateFormatter.hourFormatter.string(from: date)
     }
-
+    
     static func day(from dt: Float) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(dt))
         return DateFormatter.dayFormatter.string(from: date)

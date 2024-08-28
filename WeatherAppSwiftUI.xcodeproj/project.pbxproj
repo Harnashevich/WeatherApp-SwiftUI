@@ -70,10 +70,10 @@
 				9FDC60212C7F281400492FE4 /* Models */,
 				9F859D842C7DF029001813B5 /* Views */,
 				9F859D742C7DCEF8001813B5 /* WeatherAppSwiftUIApp.swift */,
-				9F859D782C7DCEFA001813B5 /* Assets.xcassets */,
-				9F859D7A2C7DCEFA001813B5 /* Preview Content */,
 				9FDC60252C7F2C3C00492FE4 /* Extensions.swift */,
 				9FDC602A2C7F356D00492FE4 /* LocationManager.swift */,
+				9F859D782C7DCEFA001813B5 /* Assets.xcassets */,
+				9F859D7A2C7DCEFA001813B5 /* Preview Content */,
 			);
 			path = WeatherAppSwiftUI;
 			sourceTree = "<group>";
