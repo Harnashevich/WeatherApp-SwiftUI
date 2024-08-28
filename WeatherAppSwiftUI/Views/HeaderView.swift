@@ -5,10 +5,11 @@
 //  Created by Andrei Harnashevich on 27.08.24.
 //
 
+import SwURL
 import SwiftUI
 
 struct HeaderView: View {
-    var viewModel = WeatherViewModel()
+    @EnvironmentObject var viewModel: WeatherViewModel
     
     var body: some View {
         VStack(spacing: -15) {
@@ -18,12 +19,19 @@ struct HeaderView: View {
                 .font(.system(size: 36))
                 .padding()
             
-            Image(systemName: "cloud.sun.fill")
-                .renderingMode(.original)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150, alignment: .center)
-            
+            SwURLImage(
+                url: URL(string: viewModel.headerViewModel.iconURLString)!,
+                placeholderImage: Image(systemName: "cloud.sun.fill"),
+                transition: .none
+            )
+            .imageProcessing { image in
+                return image
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, height: 150, alignment: .center)
+            }
+
             Text(viewModel.headerViewModel.currentTemp)
                 .bold()
                 .foregroundStyle(Color.white)

@@ -8,23 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: WeatherViewModel
+    
     var body: some View {
         ZStack {
             LinearGradient(
                 gradient: Gradient(colors: [
                     .blue,
                     Color(.link),
-                    .white
+                    .orange
                 ]),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
             .ignoresSafeArea()
             
-            VStack {
-                HeaderView()
-                
-                Spacer()
+            ScrollView {
+                VStack {
+                    HeaderView()
+                    HourlyView()
+                    DailyView()
+                }
             }
         }
     }
@@ -32,4 +36,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(WeatherViewModel())
 }
