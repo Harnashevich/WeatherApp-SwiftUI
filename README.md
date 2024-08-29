@@ -1,7 +1,6 @@
 # Weather(SwiftUI) <img src="https://github.com/user-attachments/assets/e4b6b615-a5bf-4e24-a38d-c33789d87fb1" width="30" height="30">
 
 Weather application on iOS.<br />
-The project is based on the iOS Academy course.
 
 ## Features
 
